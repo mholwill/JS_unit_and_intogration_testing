@@ -48,15 +48,15 @@ describe('calculator', function () {
     assert.strictEqual(10, calculator.runningTotal);
   })
 
-  it('should be able to chain multiple operations together', function(){
+  it('should be able to clear the running total without affecting the calculation', function(){
     calculator.numberClick(5);
     calculator.operatorClick('+');
     calculator.numberClick(5);
-    calculator.operatorClick('=');
     calculator.clearClick();
+    calculator.numberClick(6);
+    calculator.operatorClick('=');
     const previousTotal = calculator.previousTotal;
-    assert.equal(10, previousTotal)
-    assert.strictEqual(0, calculator.runningTotal);
+    assert.equal(11, previousTotal)
   })
 
 

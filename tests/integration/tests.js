@@ -46,7 +46,7 @@ describe('calculator functionality', function() {
     expect(running_total.getAttribute('value')).to.eventually.equal('25')
   })
 
-  it('should be able to handle a range of numbers', function(){
+  it('should be able to handle a range of numbers__decimals', function(){
     running_total = element(by.css('#running_total'))
     element(by.css('#number4')).click();
     element(by.css('#number3')).click();
@@ -60,13 +60,36 @@ describe('calculator functionality', function() {
     element(by.css('#number3')).click();
     element(by.css('#operator_equals')).click();
     expect(running_total.getAttribute('value')).to.eventually.equal('577.9681274900398')
-    element(by.css('#operator_subtract')).click();
-    element(by.css('#number1')).click();
-    element(by.css('#number0')).click();
-    element(by.css('#number0')).click();
-    element(by.css('#number0')).click();
-    element(by.css('#operator_equals')).click();
-    expect(running_total.getAttribute('value')).to.eventually.equal('-422.0318725099602')
+
+    it('should be able to handle a range of numbers__large_numbers', function(){
+      running_total = element(by.css('#running_total'))
+      element(by.css('#number4')).click();
+      element(by.css('#number3')).click();
+      element(by.css('#number5')).click();
+      element(by.css('#number2')).click();
+      element(by.css('#number1')).click();
+      element(by.css('#number0')).click();
+      element(by.css('#operator_multiply')).click();
+      element(by.css('#number7')).click();
+      element(by.css('#number5')).click();
+      element(by.css('#number3')).click();
+      element(by.css('#operator_equals')).click();
+      expect(running_total.getAttribute('value')).to.eventually.equal('327713130')
+
+  
+
+    it('should be able to handle a range of numbers__negative numbers', function(){
+      running_total = element(by.css('#running_total'))
+      element(by.css('#number1')).click();
+      element(by.css('#number0')).click();
+      element(by.css('#number0')).click();
+      element(by.css('#operator_subtract')).click();
+      element(by.css('#number1')).click();
+      element(by.css('#number0')).click();
+      element(by.css('#number0')).click();
+      element(by.css('#number0')).click();
+      element(by.css('#operator_equals')).click();
+      expect(running_total.getAttribute('value')).to.eventually.equal('-900')
   })
 
 
